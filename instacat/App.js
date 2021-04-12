@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 // this.state - usa-se na versão antiga do react
 // use.state - usa na versão mais atual
 
@@ -14,14 +14,20 @@ const App = () => {
   // Função curtir demais
   const increment = () => {
     adicionaStars(stars + 1);
+    if (stars == 15) {
+      Alert.alert('É um gatão','Gato bonito demais')
+    }
+    
   }
 
   // Função de Curtir e não curtir
   const curtidas = () => {
     if (stars == 0) {
       adicionaStars(stars + 1);
+      Alert.alert('Alegria!!!','Amamos gatinhos')
     } else if (stars == 1) {
       adicionaStars(stars - 1);
+      Alert.alert('Tristeza','Não gosta de gatinhos...')
     }
   }
 
@@ -33,16 +39,24 @@ const App = () => {
   // Render
   return (
     <View style={styles.container}>
-      <Text style={styles.text0}>{stars}</Text>
-      <TouchableOpacity onPress={increment}>
-        <Text style={styles.text}>Stars</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={curtidas}>
-        <Text style={styles.text}>Curtir</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={restart}>
-        <Text style={styles.text}>Restart</Text>
-      </TouchableOpacity>
+      <View style={styles.box1}>
+        <Text style={styles.text0}>{stars}</Text>
+        <View style={styles.itembox0}>
+          <Text style={styles.text2}>Garfield: O Lasanheiro Preguiçoso</Text>
+          <Text style={styles.text3}>Dormi durante o dia, farreá a noite e vive roubando comida da cozinha.</Text>
+        </View>
+      </View>
+      <View style={styles.box0}>
+        <TouchableOpacity onPress={increment}>
+          <Text style={styles.text1}>Stars</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={curtidas}>
+          <Text style={styles.text1}>Curtir</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={restart}>
+          <Text style={styles.text1}>Zerar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -53,32 +67,65 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fbc531',
   },
   text0: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
-    marginVertical: 5,
     padding: 10,
-    borderColor: '#000',
-    width: 50,
-    height: 50,
+    marginRight: 5,
+    color: '#2f3640',
+    borderColor: '#353b48',
+    width: 65,
+    height: 65,
     borderWidth: 2,
-    borderRadius: 100,
+    borderRadius: 25,
     textAlign: 'center',
     textAlignVertical: 'center',
-
-
+    backgroundColor: '#dcdde1',
   },
-  text: {
+  text1: {
+    color: '#2f3640',
     fontSize: 20,
     fontWeight: 'bold',
-    marginVertical: 5,
-    borderColor: '#000',
+    width: 70,
+    marginRight: 10,
+    marginVertical: 10,
+    borderColor: '#353b48',
     borderWidth: 2,
     paddingHorizontal: 10,
     paddingVertical: 2,
-    borderRadius: 3,
+    borderRadius: 15,
     textAlignVertical: 'center',
+    backgroundColor: '#e1b12c',
+    fontFamily: 'DancingScript',
+  },
+  text2: {
+    fontSize: 14,
+    color: '#2f3640',
+    fontWeight: 'bold',
+  },
+  text3: {
+    fontSize: 14,
+    color: '#353b48',
+  },
+  box0: {
+    flexDirection: 'row',
+    width: 300,
+  },
+  box1: {
+    flexDirection: 'row',
+    width: 300,
+  },
+  itembox0: {
+    width: 230,
+    height: 65,
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    borderColor: '#353b48',
+    borderWidth: 2,
+    borderRadius: 15,
+    backgroundColor: '#dcdde1',
   }
 });
 

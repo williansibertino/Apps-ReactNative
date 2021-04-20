@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import {DancingScript_700Bold, useFonts} from '@expo-google-fonts/dancing-script';
 // this.state - usa-se na versão antiga do react
 // use.state - usa na versão mais atual
 
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     textAlignVertical: 'center',
     backgroundColor: '#e1b12c',
-    fontFamily: 'DancingScript',
+    fontFamily: 'Dancing Script',
   },
   text2: {
     fontSize: 14,
